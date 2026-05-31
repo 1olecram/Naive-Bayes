@@ -282,50 +282,6 @@ def executar_parte_3(
     print(f"  - Acurácia Média nas 10 execuções: {media_acc_simplificado * 100:.4f}%")
     print(f"  - Desvio Padrão das acurácias:     {desvio_acc_simplificado * 100:.4f}%")
 
-    # Comparação final de performance
-    diferenca_absoluta = (media_acc_simplificado - acc_modelo_completo) * 100
-    
-    print("\n" + "-" * 60)
-    print(" PARÁGRAFO DE CONCLUSÃO E ANÁLISE COMPARATIVA ".center(60, "-"))
-    print("-" * 60)
-    print("\nAnálise Crítica:")
-    
-    # Texto analítico robusto e bem fundamentado sobre a redução de dimensionalidade e Naive Bayes
-    if diferenca_absoluta > 0:
-        relacao = f"um ganho marginal de {diferenca_absoluta:.4f} pontos percentuais"
-        conclusao_teorica = (
-            "Este comportamento ocorre porque o algoritmo Naive Bayes assume independência absoluta "
-            "entre as variáveis de entrada. Ao remover features redundantes ou com baixa correlação com "
-            "a variável dependente (target), reduzimos o ruído e atenuamos o impacto da suposição ingênua, "
-            "resultando em estimativas de probabilidade posterior mais acuradas."
-        )
-    elif abs(diferenca_absoluta) < 1.0:
-        relacao = f"uma diferença praticamente desprezível de {diferenca_absoluta:.4f} pontos percentuais"
-        conclusao_teorica = (
-            "Esse resultado demonstra de forma contundente o princípio da parcimônia (Navalha de Occam): "
-            "um modelo linearmente mais simples, contendo apenas 30% das características originais (3 de 10), "
-            "foi capaz de reter praticamente toda a força preditiva do sistema completo. Isso reduz a complexidade "
-            "computacional, mitiga o risco de sobreajuste (overfitting) e otimiza a interpretação médica humana."
-        )
-    else:
-        relacao = f"uma perda de {abs(diferenca_absoluta):.4f} pontos percentuais"
-        conclusao_teorica = (
-            "A redução na acurácia reflete a perda de informações complementares valiosas contidas "
-            "nas outras 7 features descartadas. Embora o Naive Bayes sofra com a suposição de independência "
-            "em dimensões mais altas, a eliminação drástica de variáveis privou o modelo de padrões "
-            "importantes sobre o perfil do paciente, indicando que a sinergia de múltiplos fatores "
-            "é relevante para o prognóstico da progressão de diabetes."
-        )
-
-    print(
-        f"A transição do modelo completo de 10 características para o modelo simplificado com apenas as 3 "
-        f"principais features ({', '.join(top_3_names)}) resultou em {relacao} na acurácia média (de "
-        f"{acc_modelo_completo * 100:.2f}% para {media_acc_simplificado * 100:.2f}%). {conclusao_teorica} "
-        f"Portanto, o modelo simplificado de 3 features se consolida como uma excelente alternativa prática, "
-        f"equilibrando eficiência estatística com interpretabilidade clínica de alta fidelidade."
-    )
-    print("\n" + "=" * 80)
-
 
 def main():
     """Gerencia o fluxo completo de execução do projeto de Inteligência Artificial."""
