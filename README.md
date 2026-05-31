@@ -1,4 +1,4 @@
-# Classificador Naive Bayes Híbrido - Atividade Prática 2
+# Classificador Naive Bayes 
 
 Este projeto apresenta uma implementação manual (do zero) do algoritmo **Gaussian Naive Bayes** aplicado ao conjunto de dados de **Diabetes** do `scikit-learn` para resolver um problema de classificação binária, atendendo 100% às especificações da **Atividade Prática 2** da disciplina de Inteligência Artificial.
 
